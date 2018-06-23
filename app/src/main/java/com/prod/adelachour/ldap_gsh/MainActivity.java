@@ -52,11 +52,15 @@ public class MainActivity extends AppCompatActivity {
                     //Toast.makeText(this, "Echouée", Toast.LENGTH_SHORT);
                 }
 
+
+                //hadi sayitha mais makhadmatch.
+                //rani nsayi nchouf la nkad ndir commit.
                 if (connection.isConnected()){
                     Toast.makeText(MainActivity.this, "Connecté !", Toast.LENGTH_SHORT);
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Echoué", Toast.LENGTH_SHORT);
+                    System.out.print("rani nseyi haja");
                 }
 
 
