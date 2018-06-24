@@ -88,24 +88,38 @@ public class MainActivity extends AppCompatActivity {
                         String name = "";
                         String mail = "";
 
-                        Filter filter = Filter.createEqualityFilter("uid", "acadel");
+                        Filter filter = Filter.createEqualityFilter("objectClass", "groupOfNames");
 
 
                         SearchRequest searchRequest =
-                                new SearchRequest("ou=system", SearchScope.SUB, filter,
+                                new SearchRequest("ou=departement,ou=system", SearchScope.SUB, filter,
                                         "cn", "mail");
                         SearchResult searchResult;
+
 
                         try
                         {
 
                             searchResult = connection.search(searchRequest);
+                            SearchResultEntry[] searchResultEntries = new SearchResultEntry[searchResult.getEntryCount()];
+                            for (int i = 0; i < searchResult.getEntryCount(); i++){
+                                searchResultEntries[i] = searchResult.getSearchEntries().get(i);
+                            }
 
-                            for (SearchResultEntry entry : searchResult.getSearchEntries())
-                            {
+                            for (int i = 0; i < searchResultEntries.length; i++){
+                                String nom = searchResultEntries[i].getAttributeValue("cn");
+                                String email = searchResultEntries[i].getAttributeValue("mail");
+                                System.out.println("Nom = "+nom+" - Email = "+email);
+
+                            }
+
+                           /* for (SearchResultEntry entry : searchResult.getSearchEntries()){
                                  name = entry.getAttributeValue("cn");
                                  mail = entry.getAttributeValue("mail");
-                            }
+                            }*/
+
+
+
                         }
                         catch (LDAPSearchException lse)
                         {
@@ -119,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
-                        System.out.println("Nom et mail: "+name+" - " +mail);
+                        //System.out.println("Nom et mail: "+name+" - " +mail);
 
 
                         ///
