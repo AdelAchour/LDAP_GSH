@@ -15,8 +15,13 @@ import com.unboundid.ldap.sdk.SearchRequest;
 import com.unboundid.ldap.sdk.SearchResult;
 import com.unboundid.ldap.sdk.SearchResultEntry;
 import com.unboundid.ldap.sdk.SearchScope;
-import com.unboundid.ldap.sdk.migrate.ldapjdk.LDAPConnection;
+//import com.unboundid.ldap.sdk.migrate.ldapjdk.LDAPConnection;
+import com.unboundid.ldap.sdk.LDAPConnection;
 import com.unboundid.ldap.sdk.migrate.ldapjdk.LDAPSearchResults;
+
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         wel = (Button)findViewById(R.id.welcome);
         find = (Button)findViewById(R.id.find);
@@ -42,64 +48,88 @@ public class MainActivity extends AppCompatActivity {
                 try
                 {
 
+                    //InetAddress address = InetAddress.getByName("192.168.1.59");
+
+                    //connection.connect(address, 10389, 2000);
                     connection.connect("192.168.1.59", 10389);
                     System.out.println("Here");
                 }
-                catch (com.unboundid.ldap.sdk.migrate.ldapjdk.LDAPException e)
+                catch (LDAPException e)
                 {
                     e.printStackTrace();
                     System.out.println("Connexion échouée");
                     //Toast.makeText(this, "Echouée", Toast.LENGTH_SHORT);
                 }
+              /*  catch (UnknownHostException ip)
+                {
+                  ip.printStackTrace();
+                }*/
 
 
-                //hadi sayitha mais makhadmatch.
-                //rani nsayi nchouf la nkad ndir commit.
+
+                // --- doesn't work ---
                 if (connection.isConnected()){
                     Toast.makeText(MainActivity.this, "Connecté !", Toast.LENGTH_SHORT);
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Echoué", Toast.LENGTH_SHORT);
-                    System.out.print("rani nseyi haja");
+
                 }
+                // -----
+
+
 
 
                 find.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
+                        ///
+                        String name = "";
+                        String mail = "";
+
+                        Filter filter = Filter.createEqualityFilter("uid", "acadel");
+
+
+                        SearchRequest searchRequest =
+                                new SearchRequest("ou=system", SearchScope.SUB, filter,
+                                        "cn", "mail");
+                        SearchResult searchResult;
+
+                        try
+                        {
+
+                            searchResult = connection.search(searchRequest);
+
+                            for (SearchResultEntry entry : searchResult.getSearchEntries())
+                            {
+                                 name = entry.getAttributeValue("cn");
+                                 mail = entry.getAttributeValue("mail");
+                            }
+                        }
+                        catch (LDAPSearchException lse)
+                        {
+                            // The search failed for some reason.
+
+                            searchResult = lse.getSearchResult();
+                            ResultCode resultCode = lse.getResultCode();
+                            String errorMessageFromServer = lse.getDiagnosticMessage();
+                            System.out.println("Error Real: "+errorMessageFromServer);
+                            System.out.println("Error Real: "+resultCode);
+
+                        }
+
+                        System.out.println("Nom et mail: "+name+" - " +mail);
+
+
+                        ///
+
+
                                            }
                 });
 
 
-       /* String attributeName = "uniqueMember";
-        LDAPAttribute attr = new LDAPAttribute(attributeName);
-        String assertionValue = "uid=mahesh.joshi,ou=users,ou=sevenSeas,dc=example,dc=com";
-        String entryDN = "cn=Java,ou=groups,ou=sevenSeas,dc=example,dc=com";
-        CompareRequest compareRequest = new CompareRequest(entryDN, attributeName, assertionValue);
-        CompareResult compareResult = null;
-        try
-        {
-            //compareResult = connection.compare(compareRequest);
-            boolean ompareResult = connection.compare(entryDN,attr);
 
-            if (ompareResult)
-            {
-                System.out.println("The user: " + assertionValue + " is a member of the group: " + entryDN);
-            }
-            else
-            {
-                System.out.println("The user: " + assertionValue + " is NOT a member of the group: " + entryDN);
-            }
-        }
-        catch (LDAPException e)
-        {
-
-            e.printStackTrace();
-        }*/
-
-
-                ///
 
             }
         });
