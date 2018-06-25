@@ -23,7 +23,10 @@
         <activity android:name=".Auth" />
         <activity android:name=".Accueil" />
         <activity android:name=".MainListEmploye" />
-        <activity android:name=".CustomAdapter"></activity>
+        <activity android:name=".CustomAdapter" />
+        <activity android:name=".DetailEmploye" />
+        <activity android:name=".MainListDepartement" />
+        <activity android:name=".CustomAdapterDepart"></activity>
     </application>
 
 </manifest>

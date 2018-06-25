@@ -20,8 +20,6 @@ public class Accueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
-        //Gson gson = new Gson();
-        //final LDAPConnection connection = gson.fromJson(getIntent().getStringExtra("myjson"), LDAPConnection.class);
 
         final LDAPConnection connection = Recpetion();
 
@@ -32,7 +30,6 @@ public class Accueil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               // Toast.makeText(Accueil.this, connection.toString(), Toast.LENGTH_SHORT).show();
                 System.out.println("Connection details: "+connection);
 
                Intent i = new Intent(Accueil.this, MainListEmploye.class);
@@ -47,6 +44,11 @@ public class Accueil extends AppCompatActivity {
         departements.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent i = new Intent(Accueil.this, MainListDepartement.class);
+                i.putExtras(Envoi(connection));
+
+                startActivity(i);
 
             }
         });

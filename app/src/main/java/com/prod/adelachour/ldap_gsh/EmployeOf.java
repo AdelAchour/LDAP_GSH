@@ -22,13 +22,13 @@ import com.unboundid.ldap.sdk.SearchResultEntry;
 import com.unboundid.ldap.sdk.SearchScope;
 import java.util.ArrayList;
 
-public class MainListEmploye extends AppCompatActivity {
+public class EmployeOf extends AppCompatActivity {
 
 
     ArrayList<EmployeModel> EmployeModels;
     ListView listView;
     private static CustomAdapter adapter;
-    String NomComplet, Tel, Title;
+    String member, NomComplet, Tel, Title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainListEmploye extends AppCompatActivity {
 
         final LDAPConnection connection = Recpetion();
 
+        String NomDepartement =  getIntent().getStringExtra("departement");
 
 
         listView=(ListView)findViewById(R.id.list);
@@ -51,8 +52,8 @@ public class MainListEmploye extends AppCompatActivity {
 
 
         SearchRequest searchRequest =
-                new SearchRequest("ou=employe,ou=system", SearchScope.SUB, filter,
-                        "cn", "telephoneNumber","title");
+                new SearchRequest("cn="+NomDepartement+",ou=departement,ou=system", SearchScope.SUB, filter,
+                        "cn","telephoneNumber","title");
         SearchResult searchResult;
 
 
@@ -66,13 +67,12 @@ public class MainListEmploye extends AppCompatActivity {
             }
 
             for (int i = 0; i < searchResultEntries.length; i++){
-                 NomComplet = searchResultEntries[i].getAttributeValue("cn");
-                 Tel = searchResultEntries[i].getAttributeValue("telephoneNumber");
-                 Title = searchResultEntries[i].getAttributeValue("title");
-                System.out.println("NomComplet = "+NomComplet+" - Tel = "+Tel+" - Poste = "+Title);
+                NomComplet = searchResultEntries[i].getAttributeValue("member");
+                Tel = searchResultEntries[i].getAttributeValue("telephoneNumber");
+                Title = searchResultEntries[i].getAttributeValue("title");
 
-                EmployeModels.add(new EmployeModel(NomComplet, Tel, Title));
 
+                EmployeModels.add(new EmployeModel(member, Tel, Title));
 
             }
 
@@ -82,9 +82,6 @@ public class MainListEmploye extends AppCompatActivity {
         }
         catch (LDAPSearchException lse)
         {
-            // The search failed for some reason.
-
-            searchResult = lse.getSearchResult();
             ResultCode resultCode = lse.getResultCode();
             String errorMessageFromServer = lse.getDiagnosticMessage();
             System.out.println("Error Real: "+errorMessageFromServer);
@@ -155,12 +152,10 @@ public class MainListEmploye extends AppCompatActivity {
 
 
 
-                Intent i = new Intent(MainListEmploye.this, DetailEmploye.class);
+                Intent i = new Intent(EmployeOf.this, DetailEmploye.class);
                 i.putExtra("detail", detailEmploye);
                 startActivity(i);
 
-                //Snackbar.make(view, EmployeModel.getName()+"\n"+EmployeModel.getType()+" API: "+EmployeModel.getVersion_number(), Snackbar.LENGTH_LONG)
-                  //      .setAction("No action", null).show();
             }
         });
 
