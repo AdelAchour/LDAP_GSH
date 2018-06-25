@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">LDAP_GSH</string>
+    <string name="app_name">LDAP GSH</string>
+    <string name="action_settings">Settings</string>
 </resources>
