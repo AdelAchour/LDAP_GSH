@@ -5,12 +5,14 @@ public class EmployeModel {
     String name;
     String tel;
     String title;
+    //String departement;
 
 
     public EmployeModel(String name, String tel, String title) {
         this.name=name;
         this.tel=tel;
         this.title=title;
+
 
     }
 
@@ -28,6 +30,8 @@ public class EmployeModel {
     public String getTitle() {
         return title;
     }
+
+
 
 
 

@@ -28,7 +28,7 @@ public class MainListEmploye extends AppCompatActivity {
     ArrayList<EmployeModel> EmployeModels;
     ListView listView;
     private static CustomAdapter adapter;
-    String NomComplet, Tel, Title;
+    String NomComplet, Tel, Title, nameD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class MainListEmploye extends AppCompatActivity {
 
 
         SearchRequest searchRequest =
-                new SearchRequest("ou=employe,ou=system", SearchScope.SUB, filter,
+                new SearchRequest("ou=departement,ou=system", SearchScope.SUB, filter,
                         "cn", "telephoneNumber","title");
         SearchResult searchResult;
 
@@ -70,6 +70,7 @@ public class MainListEmploye extends AppCompatActivity {
                  Tel = searchResultEntries[i].getAttributeValue("telephoneNumber");
                  Title = searchResultEntries[i].getAttributeValue("title");
                 System.out.println("NomComplet = "+NomComplet+" - Tel = "+Tel+" - Poste = "+Title);
+
 
                 EmployeModels.add(new EmployeModel(NomComplet, Tel, Title));
 
@@ -115,7 +116,7 @@ public class MainListEmploye extends AppCompatActivity {
                 //Find who
                 Filter filter = Filter.createEqualityFilter("cn", employeModel.getName());
                 SearchRequest searchRequest =
-                        new SearchRequest("ou=employe,ou=system", SearchScope.SUB, filter,
+                        new SearchRequest("ou=departement,ou=system", SearchScope.SUB, filter,
                                 "givenName", "sn", "homePhone", "homePostalAddress", "mail", "cn", "telephoneNumber", "title");
                 SearchResult searchResult;
 
@@ -158,6 +159,8 @@ public class MainListEmploye extends AppCompatActivity {
                 Intent i = new Intent(MainListEmploye.this, DetailEmploye.class);
                 i.putExtra("detail", detailEmploye);
                 startActivity(i);
+
+
 
                 //Snackbar.make(view, EmployeModel.getName()+"\n"+EmployeModel.getType()+" API: "+EmployeModel.getVersion_number(), Snackbar.LENGTH_LONG)
                   //      .setAction("No action", null).show();

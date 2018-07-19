@@ -37,7 +37,7 @@ public class EmployeOf extends AppCompatActivity {
 
         final LDAPConnection connection = Recpetion();
 
-        String NomDepartement =  getIntent().getStringExtra("departement");
+        final String NomDepartement =  getIntent().getStringExtra("departement");
 
 
         listView=(ListView)findViewById(R.id.list);
@@ -67,12 +67,12 @@ public class EmployeOf extends AppCompatActivity {
             }
 
             for (int i = 0; i < searchResultEntries.length; i++){
-                NomComplet = searchResultEntries[i].getAttributeValue("member");
+                NomComplet = searchResultEntries[i].getAttributeValue("cn");
                 Tel = searchResultEntries[i].getAttributeValue("telephoneNumber");
                 Title = searchResultEntries[i].getAttributeValue("title");
 
 
-                EmployeModels.add(new EmployeModel(member, Tel, Title));
+                EmployeModels.add(new EmployeModel(NomComplet, Tel, Title));
 
             }
 
@@ -112,7 +112,7 @@ public class EmployeOf extends AppCompatActivity {
                 //Find who
                 Filter filter = Filter.createEqualityFilter("cn", employeModel.getName());
                 SearchRequest searchRequest =
-                        new SearchRequest("ou=employe,ou=system", SearchScope.SUB, filter,
+                        new SearchRequest("cn="+NomDepartement+",ou=departement,ou=system", SearchScope.SUB, filter,
                                 "givenName", "sn", "homePhone", "homePostalAddress", "mail", "cn", "telephoneNumber", "title");
                 SearchResult searchResult;
 

@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
         android:text="Bonjour"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp" />
 
     <TextView
@@ -22,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textNom"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="70dp"
         android:text="Poste"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textMail"
@@ -32,9 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textNom"
-        android:layout_marginBottom="141dp"
+        android:layout_marginBottom="120dp"
         android:text="Mail"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textAdresse"
@@ -44,7 +45,7 @@
         android:layout_alignStart="@+id/textNom"
         android:layout_marginBottom="199dp"
         android:text="Adresse"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textDomicile"
@@ -54,7 +55,7 @@
         android:layout_alignStart="@+id/textNom"
         android:layout_marginBottom="256dp"
         android:text="Domicile"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textMobile"
@@ -64,7 +65,7 @@
         android:layout_alignStart="@+id/textNom"
         android:layout_marginTop="234dp"
         android:text="Mobile"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textPrenom"
@@ -75,7 +76,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="186dp"
         android:text="Prénom"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textNom"
@@ -83,10 +84,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="138dp"
         android:text="Nom"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/poste"
@@ -94,22 +95,22 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textPoste"
         android:layout_centerHorizontal="false"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textMail"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:layout_centerHorizontal="false"
         android:text="TextView"
         android:textColor="@android:color/black"
         android:textAlignment="textStart"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/adresse"
@@ -118,9 +119,9 @@
         android:layout_alignTop="@+id/textAdresse"
         android:layout_centerHorizontal="false"
         android:text="Cite 105 Logements de la"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/domicile"
@@ -128,10 +129,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textDomicile"
         android:layout_centerHorizontal="false"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/mobile"
@@ -139,32 +140,32 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textMobile"
         android:layout_centerHorizontal="false"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/prenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textPrenom"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:layout_centerHorizontal="false"
         android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/nom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textNom"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:layout_centerHorizontal="false"
         android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
 
 </RelativeLayout>

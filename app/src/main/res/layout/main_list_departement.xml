@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.prod.adelachour.ldap_gsh.MainListDepartement">
+    tools:context="com.prod.adelachour.ldap_gsh.MainListDepartement"
+    android:id="@+id/coordinatorLayout">
 
 
     <ListView

@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">LDAP GSH</string>
+    <string name="app_name">Annuaire LDAP - GSH</string>
     <string name="action_settings">Settings</string>
+    <string name="accueilPre">Vous avez la possibilité d\'accéder à la liste de tous les employés de l\'entreprise et d\'afficher leurs informations en détail.</string>
+    <string name="accueilPre2">Ainsi que la possibilité d\'accéder à tous les départements de l\'entreprise.</string>
+    <string name="Main1Welcome">Welcome to Annuaire LDAP - GSH</string>
+    <string name="Main2Slogan">L\'annuaire de votre entreprise, entre vos mains.</string>
+    <string name="Main23Cliquez">Veuillez d\'abord vous connecter au serveur de l\'entreprise.</string>
+    <string name="Main24TM">Adel Achour ©.</string>
+    <string name="inserez">Veuillez entrer l\'adresse IP et le port du serveur.</string>
 </resources>

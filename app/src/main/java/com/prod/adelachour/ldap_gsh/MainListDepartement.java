@@ -2,6 +2,8 @@ package com.prod.adelachour.ldap_gsh;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 
 public class MainListDepartement extends AppCompatActivity {
 
-
+    CoordinatorLayout coordinatorLayout;
     ArrayList<DepartModel> DepartModels;
     ListView listView;
     private static CustomAdapterDepart adapter;
@@ -34,6 +36,7 @@ public class MainListDepartement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_list_departement);
+
 
         final LDAPConnection connection = Recpetion();
 
@@ -101,6 +104,9 @@ public class MainListDepartement extends AppCompatActivity {
         adapter= new CustomAdapterDepart(DepartModels,getApplicationContext());
 
         listView.setAdapter(adapter);
+
+        
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,6 +119,7 @@ public class MainListDepartement extends AppCompatActivity {
 
 
                 Intent i = new Intent(MainListDepartement.this, EmployeOf.class);
+                i.putExtras(Envoi(connection));
                 i.putExtra("departement", nomDepart);
                 System.out.println("Nom du département: "+nomDepart);
                 startActivity(i);
@@ -127,6 +134,13 @@ public class MainListDepartement extends AppCompatActivity {
 
     public LDAPConnection Recpetion(){
         return ((ObjectWrapperForBinder)getIntent().getExtras().getBinder("object_value")).getData();
+    }
+
+    public static Bundle Envoi(LDAPConnection connection){
+        final Bundle bundle = new Bundle();
+        bundle.putBinder("object_value", new ObjectWrapperForBinder(connection));
+
+        return  bundle;
     }
 
 

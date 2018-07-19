@@ -1,11 +1,13 @@
 package com.prod.adelachour.ldap_gsh;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ActivityChooserView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -14,6 +16,7 @@ import com.unboundid.ldap.sdk.LDAPConnection;
 public class Accueil extends AppCompatActivity {
 
     Button employes, departements ;
+    ImageButton Emp, departm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +26,12 @@ public class Accueil extends AppCompatActivity {
 
         final LDAPConnection connection = Recpetion();
 
-        employes = (Button)findViewById(R.id.employes);
-        departements = (Button)findViewById(R.id.departements);
+       // employes = (Button)findViewById(R.id.employes);
+        Emp = (ImageButton)findViewById(R.id.employes);
+        departm = (ImageButton)findViewById(R.id.departm);
+      //  departements = (Button)findViewById(R.id.departements);
 
-        employes.setOnClickListener(new View.OnClickListener() {
+        Emp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -41,7 +46,7 @@ public class Accueil extends AppCompatActivity {
             }
         });
 
-        departements.setOnClickListener(new View.OnClickListener() {
+        departm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

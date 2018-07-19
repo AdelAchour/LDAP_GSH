@@ -1,7 +1,7 @@
 package com.prod.adelachour.ldap_gsh;
 
 import android.content.Context;
-//import android.support.design.widget.Snackbar;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +56,8 @@ public class CustomAdapter extends ArrayAdapter<EmployeModel> implements View.On
 
             case R.id.profil:
 
-              //  Snackbar.make(v, "Release date " +EmployeModel.getFeature(), Snackbar.LENGTH_LONG)
-                //        .setAction("No action", null).show();
+              Snackbar.make(v, "Nom et prénom : "+EmployeModel.getName(), Snackbar.LENGTH_SHORT)
+                      .setAction("No action", null).show();
 
                 break;
 

@@ -9,11 +9,9 @@
 
     <EditText
         android:id="@+id/port"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp"
+        android:layout_centerInParent="true"
         android:ems="10"
         android:hint="Port"
         android:inputType="textPersonName|numberDecimal"
@@ -21,11 +19,11 @@
 
     <EditText
         android:id="@+id/ip2"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="188dp"
         android:ems="10"
         android:hint="Adresse IP"
         android:inputType="textPersonName|numberDecimal"
@@ -33,10 +31,22 @@
 
     <Button
         android:id="@+id/buttonConnect"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="215dp"
-        android:text="Connect" />
+        android:layout_marginBottom="129dp"
+        android:background="@color/colorPrimary"
+        android:text="s'authentifier"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/inser"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp"
+        android:text="@string/inserez" />
 </RelativeLayout>
